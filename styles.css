@@ -35,15 +35,6 @@ button, select, input { font: inherit; }
 .hero h1 { margin: 12px 0 8px; font-size: clamp(28px, 4vw, 46px); }
 .hero p { margin: 0; opacity: .88; }
 
-.test-badge {
-  display: inline-block;
-  padding: 5px 11px;
-  border: 1px solid rgba(255,255,255,.45);
-  border-radius: 999px;
-  background: rgba(255,255,255,.13);
-  font-size: 13px;
-}
-
 .layout {
   width: min(1160px, calc(100% - 32px));
   margin: 28px auto 60px;
@@ -64,6 +55,7 @@ button, select, input { font: inherit; }
 .intro { padding-bottom: 20px; border-bottom: 1px solid var(--line); }
 .intro h2, .question-section h2 { margin-top: 0; }
 .question-section { padding: 30px 0; border-bottom: 1px solid var(--line); }
+.section-note { margin: -8px 0 16px; color: var(--muted); line-height: 1.6; }
 
 .question {
   min-width: 0;
@@ -162,7 +154,7 @@ button, select, input { font: inherit; }
 
 .stats {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 10px;
   margin-top: 20px;
 }

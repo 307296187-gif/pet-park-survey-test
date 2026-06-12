@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>人宠共融状况调查问卷 - 本地测试版</title>
+  <title>人宠共融状况调查问卷</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="hero">
     <div class="hero-inner">
       <h1>人宠共融状况调查问卷</h1>
-      <p>仅用于功能测试与模拟数据验证，所有答卷只保存在当前浏览器中。</p>
+      <p>用于问卷流程、分支逻辑、模拟数据和统计导出的完整测试网站。</p>
     </div>
   </header>
 
@@ -18,10 +18,10 @@
     <form id="survey-form" class="card survey-card" novalidate>
       <section class="intro">
         <h2>填答说明</h2>
-        <p>请以社区公园使用者的实际体验作答。带 <span class="required">*</span> 的题目为必填题。</p>
+        <p>请根据您在社区公园的实际体验作答。带 <span class="required">*</span> 的题目为必填题。</p>
       </section>
 
-      <section id="basic-section" class="question-section">
+      <section class="question-section">
         <h2>一、基本信息</h2>
         <div id="basic-questions"></div>
       </section>
@@ -31,10 +31,16 @@
         <div id="owner-questions"></div>
       </section>
 
+      <section id="non-owner-section" class="question-section hidden">
+        <h2>二、非养宠者经历与态度</h2>
+        <div id="non-owner-questions"></div>
+      </section>
+
       <section class="question-section">
         <h2>三、社区公园环境评价</h2>
+        <p class="section-note">请根据实际体验和内心期望，对每个项目分别选择满意度与重要性。</p>
         <div class="matrix-help">
-          <strong>每一行需要选择两个答案：</strong>
+          <strong>每一行必须选择两个答案：</strong>
           <span class="sat-dot"></span>满意度（左侧）
           <span class="imp-dot"></span>重要性（右侧）
         </div>
@@ -42,12 +48,20 @@
       </section>
 
       <section id="owner-feeling-section" class="question-section hidden">
-        <h2>四、养宠群体相处感受</h2>
+        <h2>四、群体相处感受评价（养宠群体）</h2>
+        <p class="section-note">5=非常同意，4=同意，3=一般，2=不同意，1=非常不同意。</p>
         <div id="owner-feeling-matrix" class="matrix-wrap"></div>
+      </section>
+
+      <section id="non-owner-feeling-section" class="question-section hidden">
+        <h2>四、群体相处感受评价（非养宠群体）</h2>
+        <p class="section-note">5=非常同意，4=同意，3=一般，2=不同意，1=非常不同意。</p>
+        <div id="non-owner-feeling-matrix" class="matrix-wrap"></div>
       </section>
 
       <section class="question-section">
         <h2>五、日常情境观察频率</h2>
+        <p class="section-note">请回忆近一个月内在该公园观察到以下情境的频率。</p>
         <div id="frequency-matrix" class="matrix-wrap"></div>
       </section>
 
@@ -57,12 +71,12 @@
       </section>
 
       <div id="form-error" class="form-error hidden" role="alert"></div>
-      <button class="primary-button submit-button" type="submit">提交本地测试答卷</button>
+      <button class="primary-button submit-button" type="submit">提交测试答卷</button>
     </form>
 
     <aside class="card test-panel">
       <h2>模拟测试台</h2>
-      <p>自动生成不同角色的养犬者答卷，用于检查题目、统计和导出流程。</p>
+      <p>自动生成养宠与非养宠角色，完整覆盖分支题、两个评价模块和设施需求跳题。</p>
       <label for="generate-count">生成数量</label>
       <select id="generate-count">
         <option value="10">10 份</option>
@@ -70,17 +84,21 @@
         <option value="250">250 份</option>
       </select>
       <button id="generate-button" class="primary-button" type="button">生成模拟答卷</button>
-      <button id="export-button" class="secondary-button" type="button">导出 CSV</button>
+      <button id="export-button" class="secondary-button" type="button">导出中文 CSV</button>
       <button id="clear-button" class="danger-button" type="button">清空本地数据</button>
 
       <div class="stats">
         <div>
           <span id="response-count">0</span>
-          <small>本地答卷</small>
+          <small>全部答卷</small>
         </div>
         <div>
           <span id="owner-count">0</span>
-          <small>养犬者</small>
+          <small>养宠者</small>
+        </div>
+        <div>
+          <span id="non-owner-count">0</span>
+          <small>非养宠者</small>
         </div>
       </div>
       <p id="panel-message" class="panel-message" aria-live="polite"></p>
